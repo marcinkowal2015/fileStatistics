@@ -16,7 +16,12 @@ exports.statsDetails = function() {
                     });
             });
             return Promise.all(entriesFilesStats);
-        });
+        }).then(details => {
+            return {
+                date: new Date(),
+                details: details
+            }
+        })
 };
 
 exports.countStats = function() {
@@ -28,13 +33,13 @@ exports.countStats = function() {
             return statsList.reduce((prev, next) => {
                 return [prev[0] + next[0], prev[1] + next[1]];
             }, [0, 0]);
-    }).then(stats => {
-        return {
-            date: new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
-            javascript: stats[0],
-            typescript: stats[1]
-        }
-    });
+        }).then(stats => {
+            return {
+                date: new Date(),
+                javascript: stats[0],
+                typescript: stats[1]
+            }
+        });
 };
 
 countFiles = function countFiles(path) {
