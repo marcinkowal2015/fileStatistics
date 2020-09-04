@@ -9,6 +9,6 @@
   "author": "Marcin Kowal",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^2.2.28"
+    "mongodb": "^3.6.1"
   }
 }
